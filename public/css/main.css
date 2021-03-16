@@ -45,6 +45,24 @@ code {
     padding: 2px;
 }
 
+/* Mailchimp form */
+#mc_embed_signup {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#mce-EMAIL {
+    background-color: #3a3a3a;
+    border-radius: 15px;
+    color: white;
+    padding: 10px;
+}
+
+#mc-embedded-subscribe {
+    margin-top: 20px;
+    padding: 5px;
+}
+
 /* hljs */
 .hljs {
     display: block;
