@@ -5,7 +5,7 @@ description: Mojang are silently working on text filtering, find out all about i
 
 # MC's new secret text filtering!
 
-So, in 1.16.4 Pre Release 1 Mojang silently added a new option to `[server.properties](http://server.properties)` this was `text-filtering-config`. Now, I was curious what this does so I set my sights on the code and dug in! I initially had a look at 1.16.5, I found the implementation (`net.minecraft.server.network.TextFilterClient`) and had a look through it. I quickly realised though this wasn't finished and didn't currently function. In addition, it had no API endpoints yet which it was sending data to. So, I decided to look at the snapshots! I diff'd between snapshots until I saw the endpoints get added! 21w07a worked on this implementation quite a bit and added the endpoints whoooo. I still diff'd up until 21w10a which at the time of writing is the latest snapshot.
+So, in 1.16.4 Pre Release 1 Mojang silently added a new option to `server.properties` this was `text-filtering-config`. Now, I was curious what this does so I set my sights on the code and dug in! I initially had a look at 1.16.5, I found the implementation (`net.minecraft.server.network.TextFilterClient`) and had a look through it. I quickly realised though this wasn't finished and didn't currently function. In addition, it had no API endpoints yet which it was sending data to. So, I decided to look at the snapshots! I diff'd between snapshots until I saw the endpoints get added! 21w07a worked on this implementation quite a bit and added the endpoints whoooo. I still diff'd up until 21w10a which at the time of writing is the latest snapshot.
 
 Sadly, it was now half 2 in the morning so I decided I'd sleep and look into this more tomorrow.
 
