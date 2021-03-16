@@ -1,3 +1,8 @@
+----
+title: Referrals
+description: Use my referral links and support me ❤️
+----
+
 # Referrals
 Support me by using my referral links!
 
