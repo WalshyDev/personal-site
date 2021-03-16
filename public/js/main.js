@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-  console.log('hilighting');
   hljs.highlightAll();
 
   if (localStorage.getItem('theme') === 'light') {
