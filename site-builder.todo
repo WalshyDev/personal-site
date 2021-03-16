@@ -1,0 +1,29 @@
+TODO:
+  ✔ Turn Markdown content into HTML @done (21-03-12 12:10)
+    ☐ Look into plugins I want
+      ✔ ToC @done (21-03-15 08:37)
+      ☐ https://www.npmjs.com/package/markdown-it-task-lists
+      ☐ Highlightjs plugin
+  ✔ Combine the content into the layouts @done (21-03-12 14:39)
+  ☐ Do any minifications or whatever
+  ✔ Copy over the files from /public @done (21-03-12 15:45)
+  ✔ Syntax highlight code blocks @done (21-03-12 19:22)
+  ✔ Output the final HTML files @done (21-03-15 10:23)
+  ✔ Make it so markdown files can modify meta tags. @done (21-03-15 10:23)
+    ✔ Make a plugin for this @done (21-03-15 10:16)
+    ✔ Change title @done (21-03-15 10:16)
+
+    ✔ Make it very simple to change/add any data! @done (21-03-15 10:17)
+      ✔ Change description @done (21-03-15 10:16)
+      ✔ Change keywords @done (21-03-15 10:16)
+      ✔ Change OG data @done (21-03-15 10:16)
+  ✔ Recursive building - pages/blog/post.md -> build/blog/post.html @done (21-03-16 17:17)
+
+Site workings:
+  Reads `/content/pages/` for md files
+    Turns md file into HTML
+      Reads `/content/_layouts/layout.html` for the site layout
+        Combines the layouts (`/content/_layouts/<x>.html`) with the resulting HTML from MD
+          Writes to `/build/<file>.html`
+  Copies dirs and files from `/public/` into `/build/` so that `/public/css/main.css` becomes `/build/css/main.css`
+    This dir is now ready to be used on CF Pages, Netlify, etc!

@@ -1,6 +1,2 @@
-# IntelliJ
-/.idea/
-/target/
-/out/
-/*.iml
-
+/node_modules/
+/build/

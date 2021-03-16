@@ -1,0 +1,19 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "markdown-it": "^12.0.4",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-anchor": "^7.1.0",
+    "markdown-it-table-of-contents": "^0.5.2"
+  }
+}

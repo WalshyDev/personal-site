@@ -1,0 +1,6 @@
+{
+    "optimisation": {
+        "minifyHtml": true,
+        "minifyJs": true
+    }
+}
