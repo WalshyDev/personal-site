@@ -69,7 +69,7 @@ Below I have put some notes on this. I hope I made it pretty clear what is happe
 
 Here is an example of it in action :)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/233f10c3-fe31-465c-8983-2f6310d7dd48/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/233f10c3-fe31-465c-8983-2f6310d7dd48/Untitled.png)
+![Text filtering showcase](/img/text-filtering-showcase.png)
 
 ---
 
