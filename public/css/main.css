@@ -38,6 +38,12 @@ a {
     font-size: 0.6em;
 }
 
+code {
+    background-color: #444444;
+    border-radius: 7px;
+    padding: 2px;
+}
+
 /* hljs */
 .hljs {
     display: block;
