@@ -1,6 +1,19 @@
 {
+    "site": {
+        "url": "https://walshy.dev",
+        "name": "WalshyDev",
+        "description": "This is a personal site for me to list projects, write blog posts, etc. Don't take it too seriously."
+    },
+
     "optimisation": {
         "minifyHtml": true,
         "minifyJs": true
+    },
+    "features": {
+        "rss": {
+            "enabled": true,
+            "content": "blogs",
+            "path": "/feed.xml"
+        }
     }
 }

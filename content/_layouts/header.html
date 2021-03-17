@@ -2,9 +2,9 @@
 <html>
 <head>
     <!-- Primary Meta Tags -->
-    <title>@meta(title, 'Walshy's Personal Site')</title>
-    <meta name="title" content="@meta(title, 'Walshy's Personal Site')">
-    <meta name="description" content="@meta(description, 'This is a personal site for me to list projects, write blog posts, etc. Don't take it too seriously.')">
+    <title>@meta(title, '@config(site.name)')</title>
+    <meta name="title" content="@meta(title, '@config(site.name)')">
+    <meta name="description" content="@meta(description, '@config(site.description)')">
     <meta name="keywords" content="Walshy, WalshyDev, Daniel, Walsh, Daniel Walsh, personal, site, blog, projects" />
     <meta name="author" content="Walshy" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,14 +12,14 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="@meta(url, 'https://walshy.dev')">
-    <meta property="og:title" content="@meta(title, 'Walshy's Personal Site')">
-    <meta property="og:description" content="@meta(description, 'This is a personal site for me to list projects, write blog posts, etc. Don't take it too seriously.')">
+    <meta property="og:title" content="@meta(title, '@config(site.name)')">
+    <meta property="og:description" content="@meta(description, '@config(site.description)')">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:url" content="@meta(url, 'https://walshy.dev')">
-    <meta property="twitter:title" content="@meta(title, 'Walshy's Personal Site')">
-    <meta property="twitter:description" content="@meta(description, 'This is a personal site for me to list projects, write blog posts, etc. Don't take it too seriously.')">
+    <meta property="twitter:title" content="@meta(title, '@config(site.name)')">
+    <meta property="twitter:description" content="@meta(description, '@config(site.description)')">
 
     <link rel="stylesheet" href="/css/main.css">
 
