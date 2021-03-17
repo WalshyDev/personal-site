@@ -1,7 +1,8 @@
 import * as logger from '../logger.js';
 
 export default function MetaPlugin(md) {
-  md.meta = md.meta || [];
+  // Make sure this is reset. Don't want to bring over meta from the other blogs.
+  md.meta = [];
   md.block.ruler.before('code', 'meta', meta.bind(null, md), { alt: [] })
 }
 
