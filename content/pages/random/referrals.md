@@ -11,3 +11,4 @@ Support me by using my referral links!
 
 ## Servers
 * [Vultr - https://www.vultr.com/?ref=8824230-6G](https://www.vultr.com/?ref=8824230-6G)
+  Get $100 to test the platform! Limited time deal! 🎉
