@@ -8,6 +8,8 @@ body {
     margin: auto;
     padding: 15px 0;
 
+    overflow-wrap: break-word;
+
     height: 100%;
     width: 100%;
 }
@@ -43,6 +45,10 @@ code {
     border-radius: 7px;
     color: #EB5757;
     padding: 2px;
+}
+
+img {
+    max-width: 800px;
 }
 
 /* Mailchimp form */
