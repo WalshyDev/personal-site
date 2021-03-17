@@ -34,6 +34,7 @@ a {
 
 #toggle-theme {
     float: right;
+    font-size: 1em;
 }
 
 .header-anchor {
@@ -94,6 +95,8 @@ img {
     -ms-text-size-adjust: none;
     text-size-adjust: none;
     background-color: #252525;
+
+    font-size: 1.15em;
 }
 
 .hljs-comment, .hljs-quote {
