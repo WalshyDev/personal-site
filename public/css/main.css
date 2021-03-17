@@ -21,6 +21,7 @@ body {
 
 nav a {
     padding: 0 15px;
+    font-size: 1.3em;
 }
 
 nav a:nth-child(1) {
@@ -52,6 +53,18 @@ img {
 }
 
 /* Mailchimp form */
+@media screen and (max-width: 700px) {
+    #mce-EMAIL {
+        max-width: 250px;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #mc-embedded-subscribe {
+        font-size: 1.2em;
+    }
+}
+
 #mc_embed_signup {
     text-align: center;
     margin-top: 50px;
