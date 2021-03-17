@@ -54,18 +54,6 @@ img {
 }
 
 /* Mailchimp form */
-@media screen and (max-width: 700px) {
-    #mce-EMAIL {
-        max-width: 250px;
-        font-size: 1.2em;
-        text-align: center;
-    }
-
-    #mc-embedded-subscribe {
-        font-size: 1.2em;
-    }
-}
-
 #mc_embed_signup {
     text-align: center;
     margin-top: 50px;
@@ -81,6 +69,18 @@ img {
 #mc-embedded-subscribe {
     margin-top: 20px;
     padding: 5px;
+}
+
+@media screen and (max-width: 700px) {
+    #mce-EMAIL {
+        max-width: 250px;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #mc-embedded-subscribe {
+        font-size: 1.2em;
+    }
 }
 
 /* hljs */
