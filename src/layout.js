@@ -1,6 +1,6 @@
+import config from './config.js';
 import * as fs from 'fs/promises';
 import * as logger from './logger.js';
-import * as config from './config.js';
 import { fileExists, find, getObjectString } from './functions.js';
 
 // TODO: Redo this class... it's a mess. Tokenize and just make this better

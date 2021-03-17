@@ -76,8 +76,6 @@ export function find(arr, predicate) {
 
 export function getObjectString(obj, path) {
   const arr = path.split('.');
-  obj = obj.default;
-
   while (arr.length && (obj = obj[arr.shift()]));
   return obj;
 }

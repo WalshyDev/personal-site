@@ -12,8 +12,7 @@
     "features": {
         "rss": {
             "enabled": true,
-            "content": "blogs",
-            "path": "/feed.xml"
+            "content": "blogs"
         }
     }
 }
