@@ -11,6 +11,21 @@ Sadly, it was now half 2 in the morning so I decided I'd sleep and look into thi
 
 Tomorrow came and I dug straight back into the code, I made myself a config for the text filtering and setup a very simple `express.js` server to capture the messages coming in so I could confirm it's what I expected. I could also just have a nicer look at the data and headers.
 
+## Config Values
+So, the config is a JSON object with the following schema:
+```java
+{
+  "apiServer": String, // The server which to send filtering requests to
+  "apiKey": String, // The API key to use (this is used in the Authorization header - Basic base64 auth)
+  "ruleId": Integer, // This isn't really used for anything at the min
+  "serverId": String, // The ID of this server, good for networks (this will likely be a UUID in the future if Mojang do a default implementation)
+  "hashesToDrop": Integer, // The amount of "hashes" until the message is dropped. Keep reading for more info
+  "maxConcurrentRequests": Integer // This is the thread pool size `Executors.newFixedThreadPool(maxConcurrentRequests)`
+}
+```
+For an example of this config, check the [Final Notes](#final-notes).
+
+## Testing Part 1
 Result:
 
 ```js
@@ -27,12 +42,12 @@ Result:
   'content-length': '138'
 }
 {
-  rule: 1,
-  server: 'test',
-  room: 'Chat',
-  player: 'f45cd935-7d4a-3527-9261-e4926d3ebb66',
-  player_display_name: 'HumanRightsAct',
-  text: 'a'
+  rule: 1, // The rule ID you defined in server.properties
+  server: 'test', // The server ID you defined in server.properties
+  room: 'Chat', // Always chat, this will probably change for commands, books, etc
+  player: 'f45cd935-7d4a-3527-9261-e4926d3ebb66', // The player's UUID
+  player_display_name: 'HumanRightsAct', // The players username
+  text: 'a' // The message the user sent
 }
 ```
 
@@ -42,6 +57,17 @@ I wasn't actually returning anything here so I could see console complain that i
 
 Now it's time to mess with the response! So, looking at the code I can see the response can have 3 values: `response`, `hashed` and `hashes`. If the `response` is false the message is sinked (not sent to any other users). If it is true, it then looks for a `hashed`. If that isn't in the JSON it lets the message through. If it is there, it then goes to the `hashes`
 
+## Response Schema
+Let's go through what we need to send back and what that JSON object should look like
+```java
+{
+  "response": Boolean, // If the message should be allowed - if false the message isn't sent to any users
+  "hashed": String, // The modified message for the user to send (if it wasn't dropped or accepted)
+  "hashes": String[] // The bad words/phrases that the user sent. This is used to see if the message should be dropped (hashesToDrop) 
+}
+```
+
+## Testing Part 2
 So, if I send `{"response": false}` to all messages this would mean none go through! If I send `{"response": true}` all messages go through.
 
 But wait, does that mean I can only met messages through or sink them? Ah ha, no! The `hashed` field defines the message which will be sent by the user (if it goes through)/ To test this I made my JSON response accept the message but send back a different string in `hashed`.
@@ -77,6 +103,7 @@ This was pretty fun to mess around with and definitely a nice feature, my only c
 
 Below I have put some notes on this. I hope I made it pretty clear what is happening and how. 
 
+### Result
 Here is an example of it in action :)
 
 ![Text filtering showcase](/img/text-filtering-showcase.png)
@@ -85,9 +112,19 @@ Edit (2021-03-18): 21w11a didn't do any changes to text filtering
 
 ---
 
-## Final notes:
+## Final notes
 
-Here is my `text-filtering-config` value: `{"apiServer":"http://localhost\:8000","apiKey":"aaaaaaaa","ruleId":1,"serverId":"test","hashesToDrop":2,"maxConcurrentRequests":1000}`
+Here is my `text-filtering-config` value:
+```json
+{
+  "apiServer": "http://localhost:8000",
+  "apiKey": "aaaaaaaa",
+  "ruleId": 1,
+  "serverId": "test",
+  "hashesToDrop": 2,
+  "maxConcurrentRequests": 4
+}
+```
 
 The `Authorization` header is just `Basic <base64-apiKey>`. You can base64 decode mine to verify it matches my config here! I assume this will be more secure in the future.
 
