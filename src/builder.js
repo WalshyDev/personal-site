@@ -14,7 +14,7 @@ const md = new MarkdownIt({
 })
   .use(Anchor,
     {
-      level: 1,
+      level: 2,
       permalink: true,
       permalinkSymbol: '🔗',
       permalinkBefore: true
