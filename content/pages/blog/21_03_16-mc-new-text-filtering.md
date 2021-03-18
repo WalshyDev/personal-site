@@ -44,9 +44,19 @@ Now it's time to mess with the response! So, looking at the code I can see the r
 
 So, if I send `{"response": false}` to all messages this would mean none go through! If I send `{"response": true}` all messages go through.
 
-So, that's pretty simple right? If the message has a bad word you respond with false and the message is sinked. But, what if you wanted to make it so they'd need to say 2 bad words to be sinked? Well, that's where the `hashes` field comes in to play. In the filtering config you define a `hashesToDrop` this sets the bar for how many `hashes` are needed in order to sink the message. So, if I set `hashesToDrop` to 2 and then returned a JSON like this:
+But wait, does that mean I can only met messages through or sink them? Ah ha, no! The `hashed` field defines the message which will be sent by the user (if it goes through)/ To test this I made my JSON response accept the message but send back a different string in `hashed`.
+```json
+{
+  "response": true,
+  "hashed": "I said a bad word",
+  "hashes": []
+}
+```
+We know `hashes` is an array but don't want to test that yet so we'll make it empty. This response will make the player send `I said a bad word` instead of what they originally sent! This means we can edit the message before it's sent to all players (ooooo). Ever wanted to star out a bad word for players? Well, now you can!
 
-```js
+So, that's pretty simple right? If the message has a bad word you respond with false and the message is sinked or you respond with true and modify it. But, what if you wanted to make it so they'd need to say 2 bad words to be sinked? Well, that's where the `hashes` field comes in to play. In the filtering config you define a `hashesToDrop` this sets the bar for how many `hashes` are needed in order to sink the message. So, if I set `hashesToDrop` to 2 and then returned a JSON like this:
+
+```json
 {
     "response": false,
     "hashed": "I said a bad word",
