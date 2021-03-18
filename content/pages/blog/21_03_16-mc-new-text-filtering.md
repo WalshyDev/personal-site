@@ -71,6 +71,8 @@ Here is an example of it in action :)
 
 ![Text filtering showcase](/img/text-filtering-showcase.png)
 
+Edit (2021-03-18): 21w11a didn't do any changes to text filtering
+
 ---
 
 ## Final notes:
@@ -95,3 +97,5 @@ due to the `response` being `false` by default this will sink any message sent. 
 There is code for book title and content however that is not currently sent
 
 `/tell` is not currently filtered so someone could say no no words there
+
+You cannot modify colors as the text sent is just the string rather than the JSON Text Component (not tested if you can use the deprecated color char)
