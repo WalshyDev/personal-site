@@ -130,7 +130,6 @@ Here's the minified you can post right into the server.properties file:
 {"apiServer":"http://localhost:8000","apiKey":"aaaaaaaa","ruleId":1,"serverId":"test","hashesToDrop":2,"maxConcurrentRequests":4}
 ```
 
-
 The `Authorization` header is just `Basic <base64-apiKey>`. You can base64 decode mine to verify it matches my config here! I assume this will be more secure in the future.
 
 API Endpoints:
