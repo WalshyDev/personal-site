@@ -103,7 +103,7 @@ img {
     text-size-adjust: none;
     background-color: #252525;
 
-    font-size: 0.8em;
+    /*font-size: 0.8em;*/
 }
 
 .hljs-comment, .hljs-quote {
