@@ -1,6 +1,6 @@
 body {
     background-color: #131516;
-    color: white;
+    color: #d0d0d0;
     font-size: 1.15em;
     font-family: courier;
 
@@ -14,10 +14,16 @@ body {
     /*width: 100%;*/
 }
 
+/* Light theme (no one should use this... ew) */
 #light-theme {
-    background-color: white !important;
+    background-color: #d4d4d4 !important;
     color: black !important;
 }
+
+#light-theme > nav > a {
+    color: #d69408;
+}
+/* ////// */
 
 nav a {
     padding: 0 15px;
