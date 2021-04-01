@@ -54,6 +54,13 @@ code {
     padding: 2px;
 }
 
+blockquote {
+    border-left: 6px solid #4f545c;
+    border-radius: 6px;
+    padding-left: 20px;
+    margin-left: 0;
+}
+
 img {
     max-width: 100%;
 }
