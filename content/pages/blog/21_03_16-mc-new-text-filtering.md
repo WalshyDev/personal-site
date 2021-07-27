@@ -68,9 +68,9 @@ Let's go through what we need to send back and what that JSON object should look
 ```
 
 ## Testing Part 2
-So, if I send `{"response": false}` to all messages this would mean none go through! If I send `{"response": true}` all messages go through.
+So, if I send `{"response": false}` to all messages this would mean not a single one will go through! If I send `{"response": true}` all messages go through.
 
-But wait, does that mean I can only met messages through or sink them? Ah ha, no! The `hashed` field defines the message which will be sent by the user (if it goes through)/ To test this I made my JSON response accept the message but send back a different string in `hashed`.
+But wait, does that mean I can only let messages through or sink them? Ah ha, no! The `hashed` field defines the message which will be sent by the user (if it goes through). To test this I made my JSON response accept the message but send back a different string in `hashed`.
 ```json
 {
   "response": true,
