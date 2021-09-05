@@ -26,7 +26,7 @@ function extractData(line) {
   if (matcher.index === regex.lastIndex) {
       regex.lastIndex++;
   }
-  
+
   // Make sure the groups are there
   if (matcher.length === 3) {
     return {
@@ -47,8 +47,8 @@ function meta(md, state, start, end, silent) {
     return false;
   }
 
-  // We make sure the first line is "----"
-  if (get(state, start) !== '----') {
+  // We make sure the first line is "-----" (5 dashes!)
+  if (get(state, start) !== '-----') {
     return false;
   }
 
@@ -56,8 +56,8 @@ function meta(md, state, start, end, silent) {
   let line = start;
   while (line++ < end) {
     const str = get(state, line);
-    // Check for meta block end
-    if (str === ('----')) {
+    // Check for meta block end  (5 dashes!)
+    if (str === ('-----')) {
       break;
     }
 

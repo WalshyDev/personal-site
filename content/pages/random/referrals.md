@@ -1,10 +1,13 @@
-----
+-----
 title: Referrals
 description: Use my referral links and support me ❤️
-----
+-----
 
 # Referrals
 Support me by using my referral links!
+
+## Stock
+* [Freetrade - Deposit and get a free stock worth up to £200!](https://magic.freetrade.io/join/daniel/d1078101)
 
 ## Crypto
 * [Coinbase - Coinbase is a secure platform that makes it easy to buy and sell crypto!](https://www.coinbase.com/join/walsh_yj0)

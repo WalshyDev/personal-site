@@ -1,7 +1,7 @@
-----
+-----
 title: MC's secret new text filtering
 description: Mojang are silently working on text filtering, find out all about it!
-----
+-----
 
 # MC's new secret text filtering!
 

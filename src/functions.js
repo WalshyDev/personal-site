@@ -40,8 +40,11 @@ export async function checkRequiredFiles() {
 }
 
 export async function clean() {
-  await fs.rmdir('build', { recursive: true });
-  await fs.mkdir('build');
+  const exists = await fileExists('build');
+  if (exists) {
+    await fs.rm('build', { recursive: true });
+    await fs.mkdir('build');
+  }
 }
 
 export async function copyAllFilesRecursively(dirName, outputDir) {
@@ -50,10 +53,10 @@ export async function copyAllFilesRecursively(dirName, outputDir) {
     if (file.isDirectory()) {
       const newDir = `${outputDir}/${file.name}`;
 
-      if (fileExists(newDir)) {
+      if (!await fileExists(newDir)) {
         await fs.mkdir(newDir);
       }
-      copyAllFilesRecursively(`${dirName}/${file.name}`, newDir);
+      await copyAllFilesRecursively(`${dirName}/${file.name}`, newDir);
     } else {
       logger.info(`  ${dirName}/${file.name} -> ${outputDir}/${file.name}`);
       await fs.copyFile(`${dirName}/${file.name}`, `${outputDir}/${file.name}`);

@@ -1,7 +1,7 @@
-----
+-----
 title: Why is Java 11's String repeat SO QUICK
 description: Let's dig into why Java 11's String#repeat method is so quick compared to normal util methods!
-----
+-----
 
 # Why is Java 11's String repeat SO QUICK
 

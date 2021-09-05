@@ -14,6 +14,4 @@ export function generateRss() {
     updated: new Date(),
     generator: config.site?.name
   });
-
-  
 }
