@@ -43,8 +43,8 @@ export async function clean() {
   const exists = await fileExists('build');
   if (exists) {
     await fs.rm('build', { recursive: true });
-    await fs.mkdir('build');
   }
+  await fs.mkdir('build');
 }
 
 export async function copyAllFilesRecursively(dirName, outputDir) {

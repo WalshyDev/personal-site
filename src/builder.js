@@ -33,12 +33,8 @@ export async function buildPage(filePath, fileName, outputDir) {
 
   await mkdirIfNoExists(outputDir);
 
-  console.log('a');
-
   // Note: Render needs to be called before `.meta`
   await writeLayout(`${outputDir}/${fileNameNoExtension}.html`, md.render(content), md.meta);
-
-  console.log('b');
 }
 
 export async function buildPages(dir) {
