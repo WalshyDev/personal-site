@@ -20,7 +20,7 @@ TODO:
   ✔ Recursive building - pages/blog/post.md -> build/blog/post.html @done (21-03-16 17:17)
 
 Bugs:
-  ☐ If no metadata is set it will use the previous pages. This is bad! It should just use the default values
+  ✔ If no metadata is set it will use the previous pages. This is bad! It should just use the default values
 
 Site workings:
   Reads `/content/pages/` for md files
