@@ -51,9 +51,11 @@ export async function buildPages(dir) {
   }
   const buildDir = path.resolve(build, local);
 
+  // We want to build all the files in a directory before going into any of the dirs.
+  let dirs = [];
   for await (const file of opened) {
     if (file.isDirectory()) {
-      await buildPages(path.resolve(opened.path + '/' + file.name));
+      dirs.push(file);
     } else {
       if (file.name.endsWith('.md')) {
         logger.info(`  building '${local + '/' + file.name}'...`);
@@ -62,5 +64,9 @@ export async function buildPages(dir) {
         logger.warn(`  skipping file: ${file.name} - does not have '.md' extension!`);
       }
     }
+  }
+
+  for await (const dirFile of dirs) {
+    await buildPages(path.resolve(opened.path + '/' + dirFile.name));
   }
 }
