@@ -21,6 +21,7 @@ export function writeMeta(text, meta) {
       if (matcher.length >= 2) {
         const original = matcher[0];
         const metaTag = matcher[1];
+
         let defaultText = matcher.length === 3 && matcher[2] !== undefined ? matcher[2] : '';
         if (defaultText.includes('@')) {
           defaultText = modifyTags(defaultText, meta);

@@ -33,6 +33,11 @@ export async function buildPage(filePath, fileName, outputDir) {
 
   await mkdirIfNoExists(outputDir);
 
+  // Make sure meta is reset before every render.
+  if (md.meta.length > 0) {
+    md.meta = [];
+  }
+
   // Note: Render needs to be called before `.meta`
   await writeLayout(`${outputDir}/${fileNameNoExtension}.html`, md.render(content), md.meta);
 }
@@ -40,18 +45,18 @@ export async function buildPage(filePath, fileName, outputDir) {
 export async function buildPages(dir) {
   const opened = await fs.opendir(dir);
 
-  let buildDir = opened.path.replace(pages, '');
-  if (buildDir.startsWith('/')) {
-    buildDir = buildDir.substr(1);
+  let local = opened.path.replace(pages, '');
+  if (local.startsWith('/')) {
+    local = local.substr(1);
   }
-  buildDir = path.resolve(build, buildDir);
+  const buildDir = path.resolve(build, local);
 
   for await (const file of opened) {
     if (file.isDirectory()) {
       await buildPages(path.resolve(opened.path + '/' + file.name));
     } else {
       if (file.name.endsWith('.md')) {
-        logger.info(`  building '${file.name}'...`);
+        logger.info(`  building '${local + '/' + file.name}'...`);
         await buildPage(`${path.resolve(opened.path + '/' + file.name)}`, file.name, buildDir);
       } else {
         logger.warn(`  skipping file: ${file.name} - does not have '.md' extension!`);

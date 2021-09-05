@@ -76,7 +76,7 @@ function meta(md, state, start, end, silent) {
     return false
   }
 
-  md.meta = data; 
+  md.meta = data;
   state.line = line + 1;
   return true;
 }
