@@ -4,7 +4,7 @@
 ### Slimefun
 Slimefun is a Minecraft plugin which aims to turn your Spigot Server into a modpack without ever installing a single mod. It offers everything you could possibly imagine. From Backpacks to Jetpacks! Slimefun lets every player decide on their own how much they want to dive into Magic or Tech.
 
-Slimefun is an [open source](https://github.com/Slimefun/Slimefun4) project with almost 200 contributors, over 6000 commits and a [Discord server](https://discord.gg/slimefun) with over 4,500 members!
+Slimefun is an [open source](https://github.com/Slimefun/Slimefun4) project with over 200 contributors, over 7000 commits and a [Discord server](https://discord.gg/slimefun) with over 6,500 members!
 
 Stack:
 * Java
