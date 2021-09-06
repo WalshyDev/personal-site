@@ -30,8 +30,7 @@ function extractData(line) {
   // Make sure the groups are there
   if (matcher.length === 3) {
     return {
-      meta: matcher[1],
-      value: matcher[2]
+      [matcher[1]]: matcher[2]
     }
   }
 }
@@ -52,7 +51,7 @@ function meta(md, state, start, end, silent) {
     return false;
   }
 
-  const data = [];
+  const data = {};
   let line = start;
   while (line++ < end) {
     const str = get(state, line);
@@ -68,7 +67,7 @@ function meta(md, state, start, end, silent) {
 
     const lineData = extractData(str);
     if (lineData !== null) {
-      data.push(lineData);
+      Object.assign(data, lineData);
     }
   }
 

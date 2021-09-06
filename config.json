@@ -4,6 +4,11 @@
         "name": "WalshyDev",
         "description": "This is a personal site for me to list projects, write blog posts, etc. Don't take it too seriously."
     },
+    "author": {
+        "name": "Daniel Walsh",
+        "email": "walshy@hey.com",
+        "link": "https://twitter.com/WalshyDev"
+    },
 
     "optimisation": {
         "minifyHtml": true,

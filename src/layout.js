@@ -27,9 +27,9 @@ export function writeMeta(text, meta) {
           defaultText = modifyTags(defaultText, meta);
         }
 
-        const result = find(meta, obj => obj.meta === metaTag);
+        const result = meta[metaTag];
         if (result !== null) {
-          text = text.replace(original, result.value);
+          text = text.replace(original, result);
         } else {
           text = text.replace(original, defaultText);
         }
