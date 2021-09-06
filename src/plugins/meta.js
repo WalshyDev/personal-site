@@ -2,7 +2,7 @@ import * as logger from '../logger.js';
 
 export default function MetaPlugin(md) {
   // Make sure this is reset. Don't want to bring over meta from the other blogs.
-  md.meta = [];
+  md.meta = {};
   md.block.ruler.before('code', 'meta', meta.bind(null, md), { alt: [] })
 }
 
@@ -56,7 +56,7 @@ function meta(md, state, start, end, silent) {
   while (line++ < end) {
     const str = get(state, line);
     // Check for meta block end  (5 dashes!)
-    if (str === ('-----')) {
+    if (str === '-----') {
       break;
     }
 

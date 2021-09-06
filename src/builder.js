@@ -36,8 +36,8 @@ export async function buildPage(filePath, fileName, outputDir, feed) {
   await mkdirIfNoExists(outputDir);
 
   // Make sure meta is reset before every render.
-  if (md.meta.length > 0) {
-    md.meta = [];
+  if (md.meta.length > 0 || Object.keys(md.meta).length > 0) {
+    md.meta = {};
   }
 
   // Note: Render needs to be called before `.meta`
@@ -50,14 +50,17 @@ export async function buildPage(filePath, fileName, outputDir, feed) {
     const path = outputDir.replace(build, '');
     const link = config.site?.url ? `${config.site.url}${path}/${fileNameNoExtension}` : undefined;
 
+    const title = meta.title ?? config.site?.name;
+    const description = meta.description ?? config.site?.description;
+
     const stats = await fs.stat(filePath);
     const modified = new Date(stats.mtime);
 
     feed.addItem({
-      title: meta.title,
+      title: title,
       id: fileName,
       link: link,
-      description: meta.description,
+      description: description,
       content: htmlContent,
       date: modified,
     })

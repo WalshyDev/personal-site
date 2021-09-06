@@ -28,7 +28,7 @@ export function writeMeta(text, meta) {
         }
 
         const result = meta[metaTag];
-        if (result !== null) {
+        if (result !== null && result !== undefined) {
           text = text.replace(original, result);
         } else {
           text = text.replace(original, defaultText);
