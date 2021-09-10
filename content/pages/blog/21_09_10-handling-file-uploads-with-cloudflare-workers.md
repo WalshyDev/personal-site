@@ -73,7 +73,7 @@ async function handleRequest(request) {
 }
 ```
 
-Now we have a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we need to get the [File](https://developer.mozilla.org/en-US/docs/Web/API/File). We can do this by fetching the specific entry from FromData, I'm going to use the key `file` but it could be anything so make sure this points to the key you're using! Anyway, we can fetch it like so:
+Now we have a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we need to get the [File](https://developer.mozilla.org/en-US/docs/Web/API/File). We can do this by fetching the specific entry from [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData), I'm going to use the key `file` but it could be anything so make sure this points to the key you're using (for an `input` element this will be the `name` attribute). Anyway, we can fetch it like so:
 
 ```js
 async function handleRequest(request) {
@@ -123,11 +123,11 @@ $ curl -X POST -F 'file=@/home/user/images/example.png' https://worker-name.exam
 {"name":"example.png","type":"image/png","size":30283,"hash":"17946ec18d7b80f31e545acbc8baeb6294e39adc"}
 ```
 
-Awesome! It works! :)
+Awesome, it works! :)
 
 ## Building B2 Image Uploader
 
-Now I got the image uploading working I wanted to build a B2 image uploader. I wont go through the whole process of that but it's pretty simple.
+Now I got the image uploading working I wanted to build a B2 image uploader. I won't go through the whole process of that but it's pretty simple.
 
 - Accept POST request
 - Check KV for auth/upload details
