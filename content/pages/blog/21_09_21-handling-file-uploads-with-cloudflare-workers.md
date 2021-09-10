@@ -42,7 +42,7 @@ workers_dev = false
 
 ## Compatibility flags!
 
-Now we have set the project up we're on to the key ingredient. You may have found old posts relating to this and seen that there was no native File API. This meant it was handled through strings and just wasn't a great experience. Well, not anymore!
+Now we have set the project up we're on to the key ingredient. You may have found old posts relating to this and seen that there was no native [File API](https://developer.mozilla.org/en-US/docs/Web/API/File). This meant it was handled through strings and just wasn't a great experience. Well, not anymore!
 
 Compatibility flags (Released 30th July 2021 - Wrangler v1.19.0) allow for the parser to follow browser spec. So, to do this we will want to add `compatibility_flags` and `compatibility_date` to `wrangler.toml`. We will add the flag `formdata_parser_supports_files` which as the name indicates allows the parser to support files! For the `compatibility_date` we will just point to today (Formatted in "international standard" or ISO 8601). Our `wrangler.toml` should now look like this:
 
@@ -63,7 +63,7 @@ workers_dev = false
 
 ## Handling the upload
 
-Now we go on to the actual code part. When a user uploads an image this will be done as part of form data. This means that we want to parse the form data being received by the Worker so that we can handle the file. From this FormData we will get a File, with this we can get the MIME type, name, size and of course, the contents!
+Now we go on to the actual code part. When a user uploads an image this will be done as part of form data. This means that we want to parse the form data being received by the Worker so that we can handle the file. From this [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we will get a [File](https://developer.mozilla.org/en-US/docs/Web/API/File), with this we can get the MIME type, name, size and of course, the contents!
 
 Assuming you already have the skeleton code we will start by parsing the form data that has been sent. This can be done with Request#formData like so:
 
@@ -73,7 +73,7 @@ async function handleRequest(request) {
 }
 ```
 
-Now we have a FormData we need to get the File. We can do this by fetching the specific thing from FromData, I'm going to use the key `file` but it could be anything so make sure this points to the key you're using! Anyway, we can fetch it like so:
+Now we have a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we need to get the [File](https://developer.mozilla.org/en-US/docs/Web/API/File). We can do this by fetching the specific thing from FromData, I'm going to use the key `file` but it could be anything so make sure this points to the key you're using! Anyway, we can fetch it like so:
 
 ```js
 async function handleRequest(request) {
@@ -82,7 +82,7 @@ async function handleRequest(request) {
 }
 ```
 
-and that's it! We now have a File! So, let's just test this and you can build something with it.
+and that's it! We now have a [File](https://developer.mozilla.org/en-US/docs/Web/API/File)! So, let's just test this and you can build something with it.
 
 To test let's just print out a JSON with the name, type, size and a SHA-1 hash of the file. We can do this like so:
 
