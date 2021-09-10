@@ -73,7 +73,7 @@ async function handleRequest(request) {
 }
 ```
 
-Now we have a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we need to get the [File](https://developer.mozilla.org/en-US/docs/Web/API/File). We can do this by fetching the specific thing from FromData, I'm going to use the key `file` but it could be anything so make sure this points to the key you're using! Anyway, we can fetch it like so:
+Now we have a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we need to get the [File](https://developer.mozilla.org/en-US/docs/Web/API/File). We can do this by fetching the specific entry from FromData, I'm going to use the key `file` but it could be anything so make sure this points to the key you're using! Anyway, we can fetch it like so:
 
 ```js
 async function handleRequest(request) {
