@@ -3,6 +3,8 @@ title: Handling File Uploads with Cloudflare Workers
 description: This is a tutorial of using the File API to handle file uploads on Cloudflare Workers
 -----
 
+# Handling File Uploads with Cloudflare Workers
+
 **Note:**
 > This tutorial won't be going into how Workers work or what they are exactly, I plan to have a blog post on this in the future.
 
