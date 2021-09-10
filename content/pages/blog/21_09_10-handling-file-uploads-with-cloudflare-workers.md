@@ -116,7 +116,7 @@ async function sha1(file) {
 }
 ```
 
-And let's test with a cURL (obviously use your worker url here)
+And let's test with a cURL (obviously use your worker URL here)
 
 ```bash
 $ curl -X POST -F 'file=@/home/user/images/example.png' https://worker-name.example.workers.dev
@@ -129,17 +129,17 @@ Awesome, it works! :)
 
 Now I got the image uploading working I wanted to build a B2 image uploader. I won't go through the whole process of that but it's pretty simple.
 
-- Accept POST request
-- Check KV for auth/upload details
-    - If they don't exist then call `b2_authorize_account` to get the auth details and then call `b2_get_upload_url` then store the auth and upload details in KV
-    - If they do, pass them on
-- Get the file extension and generate a UUID (`crypto.randomUUID()`) to make the file name
-- Hash the file with SHA-1
-- Upload to B2 with the upload URL we got earlier
-- Return the file name and the downloadable URL
-- Done :)
+1. Accept POST request
+2. Check KV for auth/upload details
+  * If they don't exist then call `b2_authorize_account` to get the auth details and then call `b2_get_upload_url` then store the auth and upload details in KV
+  * If they do, pass them on
+3. Get the file extension and generate a UUID (`crypto.randomUUID()`) to make the file name
+4. Hash the file with SHA-1
+5. Upload to B2 with the upload URL we got earlier
+6. Return the file name and the downloadable URL
+7. Done :)
 
-You can find my code for this here: https://pastebin.com/0gnxKwQf
+You can find my code for this here: [https://pastebin.com/0gnxKwQf](https://pastebin.com/0gnxKwQf)
 
 And see me testing it here:
 ```bash
