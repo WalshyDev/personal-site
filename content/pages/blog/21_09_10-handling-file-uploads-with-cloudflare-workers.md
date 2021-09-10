@@ -30,7 +30,7 @@ We just need to edit the `wrangler.toml` to have our `account_id`, `zone_id` and
 
 In the end it should look like this:
 
-```bash
+```toml
 name = "file-upload-tutorial"
 type = "javascript"
 account_id = "4e599df4216133509abaac54b109a647"
