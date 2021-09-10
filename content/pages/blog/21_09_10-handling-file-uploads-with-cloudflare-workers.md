@@ -4,15 +4,15 @@ description: This is a tutorial of using the File API to handle file uploads on 
 -----
 
 **Note:**
-> This tutorial wont be going into how Workers work or what they are exactly, I plan to have a blog post on this in the future.
+> This tutorial won't be going into how Workers work or what they are exactly, I plan to have a blog post on this in the future.
 
 ## Prerequisites
 
 - A command line
 - Wrangler
-- A few images to spare
+- A few minutes to spare
 
-If you want to expand this then you may also want a bucket (A B2/S3/other bucket not KFC bucket... though if you've got KFC gimme!)
+If you want to expand on this then you may also want a bucket (A B2/S3/other bucket not KFC bucket... though if you've got KFC gimme!)
 
 ## Setting up the project
 
@@ -46,7 +46,7 @@ Now we have set the project up we're on to the key ingredient. You may have foun
 
 Compatibility flags (Released 30th July 2021 - Wrangler v1.19.0) allow for the parser to follow browser spec. So, to do this we will want to add `compatibility_flags` and `compatibility_date` to `wrangler.toml`. We will add the flag `formdata_parser_supports_files` which as the name indicates allows the parser to support files! For the `compatibility_date` we will just point to today (Formatted in "international standard" or ISO 8601). Our `wrangler.toml` should now look like this:
 
-```bash
+```toml
 name = "file-upload-tutorial"
 type = "javascript"
 account_id = "4e599df4216133509abaac54b109a647"
@@ -65,7 +65,7 @@ workers_dev = false
 
 Now we go on to the actual code part. When a user uploads an image this will be done as part of form data. This means that we want to parse the form data being received by the Worker so that we can handle the file. From this [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) we will get a [File](https://developer.mozilla.org/en-US/docs/Web/API/File), with this we can get the MIME type, name, size and of course, the contents!
 
-Assuming you already have the skeleton code we will start by parsing the form data that has been sent. This can be done with Request#formData like so:
+Assuming you already have the skeleton code we will start by parsing the form data that has been sent. This can be done with [Request#formData](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData) like so (remember to await this!):
 
 ```js
 async function handleRequest(request) {
@@ -139,7 +139,7 @@ Now I got the image uploading working I wanted to build a B2 image uploader. I w
 - Return the file name and the downloadable URL
 - Done :)
 
-You can find my code for this here: 
+You can find my code for this here: https://pastebin.com/0gnxKwQf
 
 And see me testing it here:
 ```bash
