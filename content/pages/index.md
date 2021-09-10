@@ -16,3 +16,8 @@ Follow my socials:
 Contact me:
 * [Email](mailto:walshy@hey.com) - walshy@hey.com
 * Discord - Walshy#9709
+
+Follow my RSS feed:
+* RSS v2: [https://walshy.dev/rss/feed.rss](https://walshy.dev/rss/feed.rss)
+* Atom: [https://walshy.dev/rss/feed.atom](https://walshy.dev/rss/feed.atom)
+* JSON: [https://walshy.dev/rss/feed.json](https://walshy.dev/rss/feed.json)
