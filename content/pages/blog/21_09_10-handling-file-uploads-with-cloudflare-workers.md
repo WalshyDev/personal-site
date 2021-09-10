@@ -26,7 +26,7 @@ $ wrangler init
 $ touch index.js
 ```
 
-We just need to edit the `wrangler.toml` to have our `account_id`, `zone_id` and our `route`. You can find your account ID and zone ID [in the zone dashboard](https://dash.cloudflare.com/:account/:zone) on the side.
+We just need to edit the `wrangler.toml` to have our `account_id`, `zone_id` and our `route`. You can find your account ID and zone ID [in the zone dashboard](https://dash.cloudflare.com?to=/:account/:zone) on the side.
 
 In the end it should look like this:
 
