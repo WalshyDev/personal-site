@@ -7,9 +7,9 @@ description: Mojang are silently working on text filtering, find out all about i
 
 So, in 1.16.4 Pre Release 1 Mojang silently added a new option to `server.properties` this was `text-filtering-config`. Then I was curious about what it did. I set my sights on the code and dug in! I initially had a look at 1.16.5, I found the implementation (`net.minecraft.server.network.TextFilterClient`) and had a look through it. I quickly realised though this wasn't finished and didn't currently function. In addition, it had no API endpoints yet which it was sending data to. So I decided to look at the snapshots. I diff'd between snapshots until I saw the endpoints get added. 21w07a worked on this implementation quite a bit and added the endpoints. I still diff'd up until 21w10a which at the time of writing is the latest snapshot.
 
-Sadly it was now 02:30am so I decided I'd sleep and look into this more tomorrow.
+Sadly it was now 02:30am, so I decided I'd sleep and look into this more tomorrow.
 
-Tomorrow came and I dug straight back into the code, I made myself a config for the text filtering and setup a very simple `express.js` server to capture the messages coming in so I could confirm it's what I expected. I could also just have a nicer look at the data and headers.
+Tomorrow came, and I dug straight back into the code, I made myself a config for the text filtering and set up a very simple `express.js` server to capture the messages coming in, so I could confirm it's what I expected. I could also just have a nicer look at the data and headers.
 
 ## Config Values
 So, the config is a JSON object with the following schema:
@@ -53,9 +53,9 @@ Result:
 
 (side note, hey Mojang, please add a space after "server" in the User-Agent, kthx <3)
 
-I wasn't actually returning anything here so I could see console complain that it wasn't getting a response. This is a good sign, it means they're also using the data I give back 😈
+I wasn't actually returning anything here, so I could see console complain that it wasn't getting a response. This is a good sign, it means they're also using the data I give back 😈
 
-Now it's time to mess with the response! So, looking at the code I can see the response can have 3 values: `response`, `hashed` and `hashes`. If the `response` is false the message is sinked (not sent to any other users). If it is true, it then looks for a `hashed`. If that isn't in the JSON it lets the message through. If it is there, it then goes to the `hashes`
+Now it's time to mess with the response! So, looking at the code I can see the response can have 3 values: `response`, `hashed` and `hashes`. If the `response` is false the message is sunk (not sent to any other users). If it is true, it then looks for a `hashed`. If that isn't in the JSON it lets the message through. If it is there, it then goes to the `hashes`
 
 ## Response Schema
 Let's go through what we need to send back and what that JSON object should look like
@@ -80,7 +80,7 @@ But wait, does that mean I can only let messages through or sink them? Ah ha, no
 ```
 We know `hashes` is an array but don't want to test that yet so we'll make it empty. This response will make the player send `I said a bad word` instead of what they originally sent. This means we can edit the message before it's sent to all players. Ever wanted to star out a bad word for players? Well now you can.
 
-So, that's pretty simple right? If the message has a bad word you respond with false and the message is sinked or you respond with true and modify it. But, what if you wanted to make it so they'd need to say 2 bad words to be sinked? Well, that's where the `hashes` field comes in to play. In the filtering config you define a `hashesToDrop` this sets the bar for how many `hashes` are needed in order to sink the message. So, if I set `hashesToDrop` to 2 and then returned a JSON like this:
+So, that's pretty simple right? If the message has a bad word you either respond with false and the message is sunk or you respond with true and modify it. But, what if you wanted to make it, so they'd need to say 2 bad words to be sunk? Well, that's where the `hashes` field comes in to play. In the filtering config you define a `hashesToDrop` this sets the bar for how many `hashes` are needed in order to sink the message. So, if I set `hashesToDrop` to 2 and then returned a JSON like this:
 
 ```json
 {
@@ -99,7 +99,7 @@ I have put a simple NodeJS script on Pastebin that you can use to test this your
 
 If you write "herobrine" and/or "blobs" it will star that out of your message (or drop depending on your config).
 
-This was pretty fun to mess around with and definitely a nice feature, my only concern would be the privacy of this. You'd be sending every player join/leave, chat, book edit and probably more to Mojang (if they make themselves default). Now, the beauty is you can setup your own server like I did here. I can see people making a product out of this as well in the future. A web UI where you can set words and even regexs to match would be nice. Only Mojang know what the final result of this will be though! For now, there is no default config so it isn't sent anywhere.
+This was pretty fun to mess around with and definitely a nice feature, my only concern would be the privacy of this. You'd be sending every player join/leave, chat, book edit and probably more to Mojang (if they make themselves default). Now, the beauty is you can set up your own server like I did here. I can see people making a product out of this as well in the future. A web UI where you can set words and even regexs to match would be nice. Only Mojang know what the final result of this will be though! For now, there is no default config, so it isn't sent anywhere.
 
 Below I have put some notes on this. I hope I made it pretty clear what is happening and how. 
 
@@ -138,7 +138,7 @@ API Endpoints:
 - POST `/v1/join`
 - POST `/v1/leave`
 
-If you return a 204 it will set the response as an empty JSON and use the default values. These currenly are:
+If you return a 204 it will set the response as an empty JSON and use the default values. These currently are:
 
 - `response` → `false`
 - `hashed` → `null`
@@ -149,4 +149,4 @@ There is code for book title and content however that is not currently sent
 
 `/tell` is not currently filtered so someone could say no no words there
 
-You cannot modify colors as the text sent is just the string rather than the JSON Text Component (not tested if you can use the deprecated color char)
+You cannot modify colours as the text sent is just the string rather than the JSON Text Component (not tested if you can use the deprecated colour char)
