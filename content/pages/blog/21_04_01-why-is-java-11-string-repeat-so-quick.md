@@ -66,7 +66,7 @@ MyBenchmark.stringRepeat             thrpt    5  73366664.415 ± 3612541.640  op
 ```
 
 ## Why is it so quick?
-As we can see, the native String repeat is about twice as quick as Arrays.fill (which is the recommended way to do this pre-Java 9). What is this magic? Let's look toegether.
+As we can see, the native String repeat is about twice as quick as Arrays.fill (which is the recommended way to do this pre-Java 9). What is this magic? Let's look together.
 
 If we take a look at [the method](https://github.com/openjdk/jdk/blob/329697b02ee66b5bb767634dbf3ba19f6624c8d3/src/java.base/share/classes/java/lang/String.java#L4353-L4381), we see it's pretty simple:
 ```java
@@ -122,7 +122,7 @@ Normal implementations will be doing `new String(array)` whereas the code here i
 private final byte coder;
 ```
 
-So, this `byte` is a identifier for an encoding. Now let's look at where this is used:
+So, this `byte` is an identifier for an encoding. Now let's look at where this is used:
 ```java
 String(byte[] value, byte coder) {
     this.value = value;
@@ -156,7 +156,7 @@ The `String(char[])` constructor calls this, another package-private one. We can
 It makes perfect sense. They already have the character as a byte, they fill the byte array and skip the compression. Meanwhile, we need to do this compression as we have a UTF-16 String.
 
 ## Compact Strings
-If you're interested in what that `COMPACT_STRINGS` is then we can have a quick look but I wont go too deep into it and I recommend you do your own research. [See the JEP](https://openjdk.java.net/jeps/254).
+If you're interested in what that `COMPACT_STRINGS` is then we can have a quick look but I won't go too deep into it and I recommend you do your own research. [See the JEP](https://openjdk.java.net/jeps/254).
 
 They were added in Java 9 and if we take a [look at the code](https://github.com/openjdk/jdk/blob/329697b02ee66b5bb767634dbf3ba19f6624c8d3/src/java.base/share/classes/java/lang/String.java#L183-L224) there is a very nice comment explaining if this is disabled Strings are always encoded with UTF-16 (this is true pre-Java 9!). So, basically, if true it will encode String internally with Latin-1 rather than UTF-16. This provides a benefit for heap space as it's using an 8-bit character set.
 

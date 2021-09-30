@@ -18,7 +18,7 @@ If you want to expand on this then you may also want a bucket (A B2/S3/other buc
 
 ## Setting up the project
 
-Firstly, we need to setup the project. For this we will need the `wrangler.toml` (project file for Wrangler), `package.json` and the JS file we'll work on (I usually make this `index.js`)
+Firstly, we need to set up the project. For this we will need the `wrangler.toml` (project file for Wrangler), `package.json` and the JS file we'll work on (I usually make this `index.js`)
 
 We can run the following commands to set this up quickly:
 
@@ -44,9 +44,9 @@ workers_dev = false
 
 ## Compatibility flags!
 
-Now we have set the project up we're on to the key ingredient. You may have found old posts relating to this and seen that there was no native [File API](https://developer.mozilla.org/en-US/docs/Web/API/File). This meant it was handled through strings and just wasn't a great experience. Well, not anymore!
+Now we have set the project up we're on to the key ingredient. You may have found old posts relating to this and seen that there was no native [File API](https://developer.mozilla.org/en-US/docs/Web/API/File). This meant it was handled through strings and just wasn't a great experience. Well, not any more!
 
-Compatibility flags (Released 30th July 2021 - Wrangler v1.19.0) allow for the parser to follow browser spec. So, to do this we will want to add `compatibility_flags` and `compatibility_date` to `wrangler.toml`. We will add the flag `formdata_parser_supports_files` which as the name indicates allows the parser to support files! For the `compatibility_date` we will just point to today (Formatted in "international standard" or ISO 8601). Our `wrangler.toml` should now look like this:
+Compatibility flags (Released 30th July 2021 - Wrangler v1.19.0) allow for the parser to follow browser spec. So, to do this we will want to add `compatibility_flags` and `compatibility_date` to `wrangler.toml`. We will add the flag `formdata_parser_supports_files` which as the name indicates allows the parser to support files! For the `compatibility_date` we will just point to today (formatted in "international standard" or ISO 8601). Our `wrangler.toml` should now look like this:
 
 ```toml
 name = "file-upload-tutorial"
@@ -84,7 +84,7 @@ async function handleRequest(request) {
 }
 ```
 
-and that's it! We now have a [File](https://developer.mozilla.org/en-US/docs/Web/API/File)! So, let's just test this and you can build something with it.
+And that's it! We now have a [File](https://developer.mozilla.org/en-US/docs/Web/API/File)! So, let's just test this, and you can build something with it.
 
 To test let's just print out a JSON with the name, type, size and a SHA-1 hash of the file. We can do this like so:
 
@@ -129,7 +129,7 @@ Awesome, it works! :)
 
 ## Building B2 Image Uploader
 
-Now I got the image uploading working I wanted to build a B2 image uploader. I won't go through the whole process of that but it's pretty simple.
+Now I got the image uploading working I wanted to build a B2 image uploader. I won't go through the whole process of that, but it's pretty simple.
 
 1. Accept POST request
 2. Check KV for auth/upload details
@@ -149,6 +149,6 @@ $ curl -X POST -F 'image=@/home/walshy/images/resolved.png' https://file-upload-
 {"message": "Uploaded!", "file": "87bf9684-5d01-4d98-b9b6-f6a038661b4a.png", "b2Url": "https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png"}
 ```
 
-and to prove it works, I will embed it here and you can visit the URL yourself: [https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png](https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png)
+and to prove it works, I will embed it here, and you can visit the URL yourself: [https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png](https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png)
 
 <image src="https://f002.backblazeb2.com/file/worker-file-upload/87bf9684-5d01-4d98-b9b6-f6a038661b4a.png" alt="Image of a Discord embed - this is the image I uploaded" />
