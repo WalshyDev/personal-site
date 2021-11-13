@@ -57,8 +57,8 @@ We're also protecting this form with [hCaptcha](https://hcaptcha.com/). This is 
 ### Making our function
 
 Now that we have a form, we can make our function. To do this we will create a `functions` folder in the root of our project. Here is my project structure as an example:
-<!--![Project Structure](/img/pages-functions/pages_functions_structure_functions_dir.png)-->
-![Project Structure](../../../public/img/pages-functions/pages_functions_structure_functions_dir.png)
+![Project Structure](/img/pages-functions/pages_functions_structure_functions_dir.png)
+<!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_functions_dir.png) -->
 
 Now we have that directory, we want to make our function. Since we're mapping our function to `/api/contact` we want to create our function in the `/functions/api` folder and name it `contact.js`
 > Fun fact: TypeScript works here too, just name it `contact.ts` if you want to use that
@@ -66,8 +66,8 @@ Now we have that directory, we want to make our function. Since we're mapping ou
 Routing is automatically done with any files created in the `functions` folder. So, if you made a file named `new.js` under `/functions/test` you would then be able to call `/test/new` in your website. For more info on this view here: <PAGES DOCS>
 
 With that file created, this is how our directory structure looks like now:
-<!--![Project Structure](/img/pages-functions/pages_functions_structure_fnc_api_contact.png)-->
-![Project Structure](../../../public/img/pages-functions/pages_functions_structure_fnc_api_contact.png)
+![Project Structure](/img/pages-functions/pages_functions_structure_fnc_api_contact.png)
+<!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_fnc_api_contact.png) -->
 
 // Talk about how Workers and functions differ in code
 
