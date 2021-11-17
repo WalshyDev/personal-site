@@ -1,17 +1,17 @@
 # Contact Form on Pages with Functions
 
 This blog post will go over a few things:
-* What is Pages
-* What are functions
-* How to make a contact form
-* Testing & Deploying
+* [What is Pages](#what-is-pages%3F)
+* [What are functions](#what-are-functions%3F)
+* [How to make a contact form](#how-to-make-a-contact-form)
+* [Testing & Deploying](#testing-%26-deploying)
 
-If you are already in know about Pages and Functions then you can [click here](#How-to-make-a-contact-form) to skip over the introduction
+If you are already in know about Cloudflare Pages and Functions then you can [click here](#How-to-make-a-contact-form) to skip over the introduction
 
 ## What is Pages?
 Cloudflare Pages is a product for you to host static websites easily and for free (500 builds/month free plan - no bandwidth limits!). If you have a Jamstack (JavaScipt, API and Markup) website then this is the perfect service for you.
 
-Now, you may be asking, why Pages over [Netlify](https://www.netlify.com/), [GitHub Pages](https://pages.github.com/) or another service? Well, I'm glad you asked! Cloudflare has a network of over 250 datacenters all around the world and all of them can serve _your_ website ([Network Map](https://cloudflare.com/network)). This means that your website is within 50ms of 95% of the globe 🤯. If you're like me and you're a performance nut, that is pretty god damn awesome.
+Now, you may be asking, why Pages over [Netlify](https://www.netlify.com/), [GitHub Pages](https://pages.github.com/) or another service? Well, I'm glad you asked! Cloudflare has a network of over 250 datacenters all around the world and all of them can serve _your_ website ([Network Map](https://cloudflare.com/network)). This means that your website is within 50ms of 95% of the world's population 🤯. If you're like me and you're a performance nut, that is pretty god damn awesome.
 
 Alongside their network you also get the other benefits of Cloudflare, security, reliability and of course even more performance improvements.
 
@@ -53,7 +53,7 @@ The main part of this form is the `method` and `action` attributes. These define
 
 We're also protecting this form with [hCaptcha](https://hcaptcha.com/). This is a simple way to protect your website from spam. In our function we will validate that it's valid. Make sure you have a [site key](https://hcaptcha.com/signup) for your website.
 
-(I have an example repository here if you want the full code: https://github.com/WalshyDev/pages-functions-contact)
+> I have an [example repository](https://github.com/WalshyDev/pages-functions-contact) here if you want the full code.
 
 ### Making our function
 
