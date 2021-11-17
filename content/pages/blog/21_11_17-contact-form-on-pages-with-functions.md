@@ -29,7 +29,7 @@ And a lot, lot more.
 
 ## How to make a contact form
 
-### Making our form
+### Creating our form
 
 Let's start with a simple contact form.
 ```html
@@ -55,22 +55,22 @@ We're also protecting this form with [hCaptcha](https://hcaptcha.com/). This is 
 
 > I have an [example repository](https://github.com/WalshyDev/pages-functions-contact) here if you want the full code.
 
-### Making our function
+### Creating our function
 
 Now that we have a form, we can make our function. To do this we will create a `functions` folder in the root of our project. Here is my project structure as an example:
 
-<!-- ![Project Structure](/img/pages-functions/pages_functions_structure_functions_dir.png) -->
-![Project Structure](../../../public/img/pages-functions/pages_functions_structure_functions_dir.png)
+![Project Structure](/img/pages-functions/pages_functions_structure_functions_dir.png)
+<!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_functions_dir.png) -->
 
 Now we have that directory, we want to make our function. Since we're mapping our function to `/api/contact` we want to create our function in the `/functions/api` folder and name it `contact.js`
 > Fun fact: TypeScript works here too, just name it `contact.ts` if you want to use that
 
-Routing is automatically done with any files created in the `functions` folder. So, if you made a file named `new.js` under `/functions/test` you would then be able to call `/test/new` in your website. For more info on this view here: <PAGES DOCS>
+Routing is automatically done with any files created in the `functions` folder. So, if you made a file named `new.js` under `/functions/test` you would then be able to call `/test/new` in your website. For more info on this view here: [https://developers.cloudflare.com/pages/platform/functions](https://developers.cloudflare.com/pages/platform/functions)
 
 With that file created, this is how our directory structure looks like now:
 
-<!-- ![Project Structure](/img/pages-functions/pages_functions_structure_fnc_api_contact.png) -->
-![Project Structure](../../../public/img/pages-functions/pages_functions_structure_fnc_api_contact.png)
+![Project Structure](/img/pages-functions/pages_functions_structure_fnc_api_contact.png)
+<!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_fnc_api_contact.png) -->
 
 Writing code for a function is pretty simple however it is not the same as a Worker. In our case where we're utilizing routing (/functions/api) we need to export a _onRequest(Get|Post|Put|Delete)_ function. This function is called when a request with that method is made. For example, in our case, the client sends a `POST` request to `/api/contact` and the exported JS function is therefore called `onRequestPost`.
 
