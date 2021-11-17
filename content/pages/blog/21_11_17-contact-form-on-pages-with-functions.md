@@ -2,7 +2,7 @@
 
 This blog post will go over a few things:
 * [What is Pages](#what-is-pages%3F)
-* [What are functions](#what-are-functions%3F)
+* [What are Functions](#what-are-functions%3F)
 * [How to make a contact form](#how-to-make-a-contact-form)
 * [Testing & Deploying](#testing-%26-deploying)
 
@@ -15,8 +15,8 @@ Now, you may be asking, why Pages over [Netlify](https://www.netlify.com/), [Git
 
 Alongside their network you also get the other benefits of Cloudflare, security, reliability and of course even more performance improvements.
 
-## What are functions?
-Functions are a way to run serverless code in front of your Pages project. If you know about [Workers](https://workers.dev), Functions are the same but built right into Pages. Some use cases of functions are:
+## What are Functions?
+Functions are a way to run serverless code in front of your Pages project. If you know about [Workers](https://workers.dev), Functions are the same but built right into Pages. Some use cases of Functions are:
 * Fetch data from an API
 * Adding contact forms (hey, that's this blog!)
 * Adding payments
@@ -49,20 +49,20 @@ Let's start with a simple contact form.
 </form>
 ```
 
-The main part of this form is the `method` and `action` attributes. These define _how_ we send this to our function. Since we're sending a `POST` to `/api/contact` it means that's where our function will be mapped to.
+The main part of this form is the `method` and `action` attributes. These define _how_ we send this to our Function. Since we're sending a `POST` to `/api/contact` it means that's where our Function will be mapped to.
 
-We're also protecting this form with [hCaptcha](https://hcaptcha.com/). This is a simple way to protect your website from spam. In our function we will validate that it's valid. Make sure you have a [site key](https://hcaptcha.com/signup) for your website.
+We're also protecting this form with [hCaptcha](https://hcaptcha.com/). This is a simple way to protect your website from spam. In our Function we will validate that it's valid. Make sure you have a [site key](https://hcaptcha.com/signup) for your website.
 
 > I have an [example repository](https://github.com/WalshyDev/pages-functions-contact) here if you want the full code.
 
-### Creating our function
+### Creating our Function
 
-Now that we have a form, we can make our function. To do this we will create a `functions` folder in the root of our project. Here is my project structure as an example:
+Now that we have a form, we can make our Function. To do this we will create a `functions` folder in the root of our project. Here is my project structure as an example:
 
 ![Project Structure](/img/pages-functions/pages_functions_structure_functions_dir.png)
 <!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_functions_dir.png) -->
 
-Now we have that directory, we want to make our function. Since we're mapping our function to `/api/contact` we want to create our function in the `/functions/api` folder and name it `contact.js`
+Now we have that directory, we want to make our Function. Since we're mapping our Function to `/api/contact` we want to create our Function in the `/functions/api` folder and name it `contact.js`
 > Fun fact: TypeScript works here too, just name it `contact.ts` if you want to use that
 
 Routing is automatically done with any files created in the `functions` folder. So, if you made a file named `new.js` under `/functions/test` you would then be able to call `/test/new` in your website. For more info on this view here: [https://developers.cloudflare.com/pages/platform/functions](https://developers.cloudflare.com/pages/platform/functions)
@@ -72,7 +72,7 @@ With that file created, this is how our directory structure looks like now:
 ![Project Structure](/img/pages-functions/pages_functions_structure_fnc_api_contact.png)
 <!-- ![Project Structure](../../../public/img/pages-functions/pages_functions_structure_fnc_api_contact.png) -->
 
-Writing code for a function is pretty simple however it is not the same as a Worker. In our case where we're utilizing routing (/functions/api) we need to export a _onRequest(Get|Post|Put|Delete)_ function. This function is called when a request with that method is made. For example, in our case, the client sends a `POST` request to `/api/contact` and the exported JS function is therefore called `onRequestPost`.
+Writing code for a Function is pretty simple however it is not the same as a Worker. In our case where we're utilizing routing (/functions/api) we need to export a _onRequest(Get|Post|Put|Delete)_ function. This function is called when a request with that method is made. For example, in our case, the client sends a `POST` request to `/api/contact` and the exported JS function is therefore called `onRequestPost`.
 
 This means that our code setup looks like this:
 ```js
@@ -118,6 +118,6 @@ With the data we can now simply validate the captcha and send the message. The m
 // In action (gif?)
 
 ## Testing & Deploying
-If you're not new to Pages then you will understand the trouble of testing this locally, well no more! [Pages CLI]() has now been released so you can easily test your website **and** your functions!
+If you're not new to Pages then you will understand the trouble of testing this locally, well no more! [Pages CLI]() has now been released so you can easily test your website **and** your Functions!
 
 // Note about envs locally - Miniflare may pick up .env?? test
