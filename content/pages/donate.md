@@ -6,6 +6,6 @@ description: If you have a few bucks to spare then you can support my work by do
 # Donate
 
 You can support me through:
-* GitHub: https://github.com/sponsors/WalshyDev
-* PayPal: https://paypal.me/walshblob
-* BuyMeACoffee: https://buymeacoffee.com/walshy
+* GitHub: [https://github.com/sponsors/WalshyDev](https://github.com/sponsors/WalshyDev)
+* PayPal: [https://paypal.me/walshblob](https://paypal.me/walshblob)
+* BuyMeACoffee: [https://buymeacoffee.com/walshy](https://buymeacoffee.com/walshy)
