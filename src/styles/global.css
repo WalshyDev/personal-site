@@ -1,0 +1,99 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-accent: #fb9a00;
+  --color-accent-hover: #e08a00;
+  --color-accent-dim: #fb9a0020;
+}
+
+/* Prose customization for dark theme */
+.prose {
+  --tw-prose-body: theme(--color-neutral-300);
+  --tw-prose-headings: theme(--color-neutral-100);
+  --tw-prose-lead: theme(--color-neutral-400);
+  --tw-prose-links: theme(--color-accent);
+  --tw-prose-bold: theme(--color-neutral-100);
+  --tw-prose-counters: theme(--color-neutral-400);
+  --tw-prose-bullets: theme(--color-accent);
+  --tw-prose-hr: theme(--color-neutral-800);
+  --tw-prose-quotes: theme(--color-neutral-300);
+  --tw-prose-quote-borders: theme(--color-accent);
+  --tw-prose-captions: theme(--color-neutral-400);
+  --tw-prose-code: theme(--color-accent);
+  --tw-prose-pre-code: theme(--color-neutral-200);
+  --tw-prose-pre-bg: theme(--color-neutral-900);
+  --tw-prose-th-borders: theme(--color-neutral-700);
+  --tw-prose-td-borders: theme(--color-neutral-800);
+}
+
+.prose {
+  line-height: 1.6;
+}
+
+.prose p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose a:hover {
+  color: theme(--color-accent-hover);
+}
+
+.prose code:not(pre code) {
+  background: theme(--color-neutral-800);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: none;
+}
+
+.prose pre {
+  border: 1px solid theme(--color-neutral-800);
+  border-radius: 0.5rem;
+  line-height: 1.4;
+}
+
+.prose pre code {
+  line-height: inherit;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  border: 1px solid theme(--color-neutral-800);
+}
+
+.prose blockquote {
+  border-left-width: 3px;
+  font-style: normal;
+}
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+/* Heading anchor links */
+.prose :is(h1, h2, h3, h4, h5, h6) > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) > a:hover {
+  color: inherit;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) > a::after {
+  content: " #";
+  opacity: 0;
+  color: theme(--color-accent);
+  transition: opacity 0.2s;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6):hover > a::after {
+  opacity: 0.5;
+}

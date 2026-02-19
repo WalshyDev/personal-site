@@ -1,0 +1,27 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/rss": "4.0.15",
+    "@astrojs/sitemap": "3.7.0",
+    "astro": "5.17.3",
+    "rehype-autolink-headings": "7.1.0",
+    "rehype-slug": "6.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.0",
+    "@tailwindcss/typography": "0.5.19",
+    "@tailwindcss/vite": "4.2.0",
+    "tailwindcss": "4.2.0",
+    "typescript": "5.9.3",
+    "wrangler": "4.66.0"
+  }
+}

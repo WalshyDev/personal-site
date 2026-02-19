@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { SOCIAL_LINKS } from "../consts";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.hidden)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Base description="WalshyDev - Full-stack developer focused on backend, performance, and analytics.">
+  <div class="flex flex-col items-center text-center mb-16">
+    <img src="/img/blob.svg" alt="WalshyDev" class="w-24 h-24 mb-6" />
+    <h1 class="text-4xl font-bold text-neutral-100 mb-4">WalshyDev</h1>
+    <p class="text-lg text-neutral-400 max-w-lg">
+      Full-stack developer focused on backend, performance, and analytics.
+      Building things with Cloudflare Workers (TypeScript), Go, Rust, and whatever else catches my interest.
+    </p>
+    <div class="flex gap-4 mt-6">
+      {Object.entries(SOCIAL_LINKS).map(([name, url]) => (
+        <a href={url} target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-accent transition-colors">
+          {name}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <section>
+    <h2 class="text-xl font-bold text-neutral-100 mb-4">Recent Posts</h2>
+    <div class="space-y-1">
+      {posts.map((post) => (
+        <a href={`/blog/${post.id}/`} class="block group p-4 -mx-4 rounded-lg hover:bg-neutral-900 transition-colors">
+          <h3 class="font-semibold text-neutral-100 group-hover:text-accent transition-colors">{post.data.title}</h3>
+          <time class="text-sm text-neutral-500">{formatDate(post.data.date)}</time>
+        </a>
+      ))}
+    </div>
+    <a href="/blog" class="inline-block mt-4 text-accent hover:text-accent-hover transition-colors text-sm">
+      View all posts &rarr;
+    </a>
+  </section>
+</Base>

@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import { SITE_NAME, NAV_LINKS, SOCIAL_LINKS } from "../consts";
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: "website" | "article";
+  publishedDate?: string;
+}
+
+const { title, description, type = "website", publishedDate } = Astro.props;
+
+const fullTitle = title && title !== SITE_NAME ? `${title} | ${SITE_NAME}` : SITE_NAME;
+const desc = description || "Developer blog and projects by WalshyDev";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/img/blob_512.png", Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title || SITE_NAME} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title || SITE_NAME} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@WalshyDev" />
+    {publishedDate && <meta property="article:published_time" content={publishedDate} />}
+
+    <link rel="icon" type="image/svg+xml" href="/img/blob.svg" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} RSS`} href="/rss.xml" />
+  </head>
+  <body class="bg-neutral-950 text-neutral-300 min-h-screen flex flex-col">
+    <header class="border-b border-neutral-800">
+      <nav class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 text-neutral-100 hover:text-accent transition-colors font-semibold text-lg">
+          <img src="/img/blob.svg" alt="" class="w-8 h-8" />
+          {SITE_NAME}
+        </a>
+        <div class="flex items-center gap-6">
+          {NAV_LINKS.map((link) => (
+            <a href={link.href} class="text-neutral-400 hover:text-accent transition-colors">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-3xl mx-auto px-6 py-12 w-full">
+      <slot />
+    </main>
+
+    <footer class="border-t border-neutral-800">
+      <div class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
+        <span>&copy; {new Date().getFullYear()} {SITE_NAME}</span>
+        <div class="flex items-center gap-4">
+          {Object.entries(SOCIAL_LINKS).map(([name, url]) => (
+            <a href={url} target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              {name}
+            </a>
+          ))}
+          <a href="/rss.xml" class="hover:text-accent transition-colors">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

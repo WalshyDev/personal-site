@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://walshy.dev/sitemap.xml

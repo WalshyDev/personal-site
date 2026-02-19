@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.hidden)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Base title="Blog" description="Blog posts by WalshyDev">
+  <h1 class="text-3xl font-bold text-neutral-100 mb-8">Blog</h1>
+  <div class="space-y-2">
+    {posts.map((post) => (
+      <a href={`/blog/${post.id}/`} class="block group p-4 -mx-4 rounded-lg hover:bg-neutral-900 transition-colors">
+        <h2 class="text-lg font-semibold text-neutral-100 group-hover:text-accent transition-colors">
+          {post.data.title}
+        </h2>
+        <time class="text-sm text-neutral-500">{formatDate(post.data.date)}</time>
+        {post.data.description && (
+          <p class="mt-1 text-neutral-400 text-sm">{post.data.description}</p>
+        )}
+      </a>
+    ))}
+  </div>
+</Base>
