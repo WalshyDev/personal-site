@@ -2,8 +2,10 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "personal-site",
   "compatibility_date": "2026-02-19",
+  "account_id": "4e599df4216133509abaac54b109a647",
   "workers_dev": false,
   "preview_urls": true,
+  "route": { "pattern": "walshy.dev", "custom_domain": true },
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page"
