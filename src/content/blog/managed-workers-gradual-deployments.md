@@ -5,7 +5,7 @@ date: 2026-03-08
 tweet: https://x.com/walshydev/status/2030773568309522800
 ---
 
-Have you ever deployed a change to your Worker and broken production? Yeah... I think we all have. You push a change, it goes out to 100% of traffic immediately and then everything is on fire before you even take a drink. It's not a great.
+Have you ever deployed a change to your Worker and broken production? Yeah... I think we all have. You push a change, it goes out to 100% of traffic immediately and then everything is on fire before you even take a drink. It's not great.
 
 Cloudflare actually has a really great feature to prevent this called [Gradual Deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/). The idea is simple: instead of shipping to 100% immediately, you roll out to a small percentage of traffic first, make sure things are good, then keep going. Canary deployments. It's a well established pattern and Cloudflare has it built right into Workers.
 
