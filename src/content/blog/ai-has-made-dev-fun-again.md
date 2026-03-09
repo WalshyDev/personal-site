@@ -2,6 +2,7 @@
 title: AI has made development fun again
 description: I've been using AI tools heavily for the past few months and it's genuinely made me enjoy building again. Here's how.
 date: 2026-03-07
+tweet: https://x.com/walshydev/status/2030359262078128426
 ---
 
 I work a lot. After work I'm often too tired to sit down and actually write code. I've had projects I have wanted to build for ages but they would take a lot of time which I just did not have. The motivation to start something knowing it'll take weeks of evenings to finish just wasn't there. So things sat half done or never started at all.

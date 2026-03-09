@@ -2,6 +2,7 @@
 title: Managed gradual deployments for Cloudflare Workers
 description: Cloudflare Workers has gradual deployments but nobody uses them because it's a pain. CanaryRoll fixes that.
 date: 2026-03-08
+tweet: https://x.com/walshydev/status/2030773568309522800
 ---
 
 Have you ever deployed a change to your Worker and broken production? Yeah... I think we all have. You push a change, it goes out to 100% of traffic immediately and then everything is on fire before you even take a drink. It's not a great.

@@ -15,6 +15,10 @@ const { Content } = await render(post);
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const postUrl = new URL(`/blog/${post.id}/`, Astro.site).toString();
+const shareText = post.data.title;
+const twitterShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(postUrl)}`;
 ---
 
 <Base
@@ -26,7 +30,37 @@ const formatDate = (date: Date) =>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl font-bold text-neutral-100 mb-2">{post.data.title}</h1>
-      <time class="text-neutral-500 text-sm">{formatDate(post.data.date)}</time>
+      <div class="flex items-center gap-3 text-sm">
+        <time class="text-neutral-500">{formatDate(post.data.date)}</time>
+        {post.data.tweet && (
+          <>
+            <span class="text-neutral-700">&middot;</span>
+            <a
+              href={post.data.tweet}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-neutral-500 hover:text-accent transition-colors inline-flex items-center gap-1.5"
+            >
+              <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-current" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              Repost on X
+            </a>
+          </>
+        )}
+        <span class="text-neutral-700">&middot;</span>
+        <a
+          href={twitterShareUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-neutral-500 hover:text-accent transition-colors inline-flex items-center gap-1.5"
+        >
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-current" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          Share on X
+        </a>
+      </div>
     </header>
     <div class="prose max-w-none">
       <Content />
