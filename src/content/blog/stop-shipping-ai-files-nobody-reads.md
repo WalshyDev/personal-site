@@ -2,7 +2,6 @@
 title: Stop shipping AI files nobody reads
 description: Everyone's racing to ship new "standards" for AI agents like llms.txt, auth.md, api-catalog, you name it. None of it gets used. Here's why it is not a benefit.
 date: 2026-06-15
-draft: true
 ---
 
 Every week there's a new "AI-ready" file or standard you're supposed to ship. [`llms.txt`](https://llmstxt.org/), [`auth.md`](https://workos.com/auth-md/docs/auth-md), [`/.well-known/api-catalog`](https://www.rfc-editor.org/rfc/rfc9727.html), [`ai.txt`](https://aitxt.ing/), and on, and on. New blog posts hyping them. New SEO tools generating them. New thought-leader threads telling you you're behind if you don't have one.
